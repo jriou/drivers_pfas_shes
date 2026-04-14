@@ -19,16 +19,13 @@ fn_006_pfas_clustering = function(dat_in) {
   # pick number of clusters k 
   if(FALSE){
     # euclidian distance
-    diss_matrix = cluster::daisy(dat_1,metric = "euclidean")
-    best_k_plot_gap_disteuc = factoextra::fviz_nbclust(as.matrix(diss_matrix), pam, method = "gap_stat")
+    best_k_plot_gap_disteuc = factoextra::fviz_nbclust(dat_1,metric = "euclidean", pam, method = "gap_stat")
     write_rds(best_k_plot_gap_disteuc,file=file.path(controls$savepoint,"pfas_best_k_plot_gap_disteuc.rds"))
     # gower distance
-    diss_matrix = cluster::daisy(dat_1,metric = "gower")
-    best_k_plot_gap_distgower = factoextra::fviz_nbclust(as.matrix(diss_matrix), pam, method = "gap_stat")
+    best_k_plot_gap_distgower = factoextra::fviz_nbclust(dat_1,metric = "gower", pam, method = "gap_stat")
     write_rds(best_k_plot_gap_distgower,file=file.path(controls$savepoint,"pfas_best_k_plot_gap_distgower.rds"))
     # manhattan distance
-    diss_matrix = cluster::daisy(dat_1,metric = "manhattan")
-    best_k_plot_gap_distman = factoextra::fviz_nbclust(as.matrix(diss_matrix), pam, method = "gap_stat")
+    best_k_plot_gap_distman = factoextra::fviz_nbclust(dat_1,metric = "manhattan", pam, method = "gap_stat")
     best_k_plot_gap_distman + labs(title=NULL)
     ggsave(file=file.path(controls$savepoint,"pfas_best_k_plot_gap_distman.pdf"))
     write_rds(best_k_plot_gap_distman,file=file.path(controls$savepoint,"pfas_best_k_plot_gap_distman.rds"))
